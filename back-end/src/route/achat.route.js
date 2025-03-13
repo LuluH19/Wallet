@@ -22,7 +22,7 @@ achatRouter.get("/", (req, res) => {
                 } else if (compte.utilisateur != currentUser._id) {
                     return res.status(400).send({ message: "not your compte" })
                 } else {
-                    achatModel.find(currentCompte).populate({ path: "compte", select: "numeroCompte" }).then(achats => {
+                    achatModel.find({compte:currentCompte._id}).populate({ path: "compte", select: "numeroCompte" }).then(achats => {
                         return res.send(achats)
                     })
                 }
