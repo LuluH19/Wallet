@@ -20,7 +20,6 @@ const compteSchema = new mongoose.Schema({
 }, { versionKey: false });
 
 const achatSchema = new mongoose.Schema({
-    utilisateur: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     compte: { type: mongoose.Schema.Types.ObjectId, ref: 'Compte', required: true },
     montant: { type: Number, required: true, min: 0 },
     devise: { type: String, default: "EUR", trim: true },
