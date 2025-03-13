@@ -22,9 +22,10 @@ virementRouter.get("/", (req, res) => {
                 } else if (compte.utilisateur != currentUser._id) {
                     return res.status(400).send({ message: "not your compte" })
                 } else {
-                    virementModel.find({ expediteur: currentCompte._id }).populate({ path: "expediteur", select: "numeroCompte" }).then(virements => {
-                        return res.status(200).send(virements)
-                    })
+                    virementModel.find({ $or: [{ expediteur: currentCompte._id }, { destinataire: currentCompte._id }] })
+                        .populate({ path: "expediteur", select: "numeroCompte" }).then(virements => {
+                            return res.status(200).send(virements)
+                        })
                 }
             })
         }
@@ -63,7 +64,7 @@ virementRouter.post("/create", (req, res) => {
                             } else {
                                 compteModel.findOneAndUpdate({ utilisateur: currentVirement.expediteur }, { solde: expediteur.solde - currentVirement.montant }).then(() => {
                                     compteModel.findOneAndUpdate({ utilisateur: currentVirement.destinataire }, { solde: destinataire.solde + currentVirement.montant }).then(() => {
-                                        virementModel.create(currentVirement).then(()=>{
+                                        virementModel.create(currentVirement).then(() => {
                                             res.status(200).send({ message: "virement created" })
                                         })
                                     })
