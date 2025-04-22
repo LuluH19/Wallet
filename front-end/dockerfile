@@ -1,0 +1,7 @@
+FROM node:23-alpine
+RUN mkdir /wallet_front
+COPY . ./wallet_front
+WORKDIR /wallet_front
+RUN npm i
+EXPOSE 5173
+CMD ["npm","run","dev"]
