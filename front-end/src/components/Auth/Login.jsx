@@ -24,18 +24,20 @@ const Login = () => {
     
     try {
       setLoading(true);
-      // Pour la démo, on simule une connexion
-      // En production, utilisez le service login
-      // const userData = await login(formData);
-      
-      // Simulation
+
       await new Promise(resolve => setTimeout(resolve, 1000));
+      
+
+      const existingUser = localStorage.getItem('user');
+      const existingData = existingUser ? JSON.parse(existingUser) : {};
+      
       const userData = {
+        ...existingData,
         id: '123',
         email: formData.email,
-        nom: 'Doe',
-        prenom: 'John',
-        role: formData.email.includes('admin') ? 'admin' : 'client',
+        nom: existingData.nom || 'delarue',
+        prenom: existingData.prenom || 'luca',
+        role: formData.email.toLowerCase().includes('admin') ? 'admin' : 'client',
         token: 'fake-jwt-token'
       };
       

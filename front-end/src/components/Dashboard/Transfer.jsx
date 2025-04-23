@@ -17,7 +17,6 @@ const Transfer = () => {
     const fetchComptes = async () => {
       try {
         setLoading(true);
-        // Pour la démo, on simule une réponse
         await new Promise(resolve => setTimeout(resolve, 800));
         
         const mockComptes = [
@@ -61,7 +60,6 @@ const Transfer = () => {
 
     try {
       setLoading(true);
-      // Pour la démo, on simule une réponse
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       setSuccess(`Virement de ${transferData.montant}€ effectué avec succès`);

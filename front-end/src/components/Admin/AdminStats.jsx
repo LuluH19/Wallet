@@ -22,10 +22,8 @@ const AdminStats = () => {
   const fetchStats = async () => {
     try {
       setLoading(true);
-      // Simulation d'appel API
       await new Promise(resolve => setTimeout(resolve, 1200));
       
-      // Données simulées
       setStats({
         usersCount: 145,
         transactionsCount: 367,

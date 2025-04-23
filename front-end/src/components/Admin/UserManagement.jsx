@@ -12,7 +12,7 @@ const UserManagement = () => {
     email: '',
     role: 'client'
   });
-  const [mode, setMode] = useState('list'); // 'list', 'add', 'edit'
+  const [mode, setMode] = useState('list'); 
 
   useEffect(() => {
     fetchUsers();
@@ -21,7 +21,6 @@ const UserManagement = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      // Simulation d'appel API
       await new Promise(resolve => setTimeout(resolve, 800));
       
       const mockUsers = [
@@ -73,11 +72,9 @@ const UserManagement = () => {
     setLoading(true);
     
     try {
-      // Simuler une sauvegarde
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       if (mode === 'add') {
-        // Simuler l'ajout d'un utilisateur
         const newUser = {
           _id: `user${users.length + 1}`,
           ...formData,
@@ -85,14 +82,12 @@ const UserManagement = () => {
         };
         setUsers([...users, newUser]);
       } else if (mode === 'edit' && selectedUser) {
-        // Simuler la modification d'un utilisateur
         const updatedUsers = users.map(user => 
           user._id === selectedUser._id ? { ...user, ...formData } : user
         );
         setUsers(updatedUsers);
       }
       
-      // Revenir à la liste
       setMode('list');
       setSelectedUser(null);
     } catch (err) {
@@ -107,10 +102,8 @@ const UserManagement = () => {
     if (window.confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur?')) {
       try {
         setLoading(true);
-        // Simuler une suppression
         await new Promise(resolve => setTimeout(resolve, 800));
         
-        // Filtrer l'utilisateur supprimé
         const updatedUsers = users.filter(user => user._id !== userId);
         setUsers(updatedUsers);
       } catch (err) {
@@ -125,10 +118,8 @@ const UserManagement = () => {
   const handleToggleStatus = async (user) => {
     try {
       setLoading(true);
-      // Simuler une mise à jour de statut
       await new Promise(resolve => setTimeout(resolve, 600));
       
-      // Mettre à jour le statut
       const updatedUsers = users.map(u => 
         u._id === user._id 
           ? { ...u, status: u.status === 'actif' ? 'inactif' : 'actif' } 

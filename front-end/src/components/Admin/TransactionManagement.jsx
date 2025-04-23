@@ -27,7 +27,6 @@ const TransactionManagement = () => {
   const fetchTransactions = async () => {
     try {
       setLoading(true);
-      // Simulation d'appel API
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       const now = new Date();
@@ -148,10 +147,8 @@ const TransactionManagement = () => {
   const approveTransaction = async (transactionId) => {
     try {
       setLoading(true);
-      // Simuler approbation
       await new Promise(resolve => setTimeout(resolve, 800));
       
-      // Mettre à jour le statut de la transaction
       const updatedTransactions = transactions.map(t => 
         t._id === transactionId ? { ...t, statut: 'complété' } : t
       );
@@ -169,10 +166,9 @@ const TransactionManagement = () => {
     if (window.confirm('Êtes-vous sûr de vouloir rejeter cette transaction?')) {
       try {
         setLoading(true);
-        // Simuler rejet
+        
         await new Promise(resolve => setTimeout(resolve, 800));
         
-        // Mettre à jour le statut de la transaction
         const updatedTransactions = transactions.map(t => 
           t._id === transactionId ? { ...t, statut: 'rejeté' } : t
         );

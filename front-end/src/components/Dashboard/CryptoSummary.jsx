@@ -9,10 +9,8 @@ const CryptoSummary = () => {
     const fetchCryptoAssets = async () => {
       try {
         setLoading(true);
-        // Simulation de chargement
         await new Promise(resolve => setTimeout(resolve, 1200));
         
-        // Données de test
         const mockAssets = [
           { id: 'bitcoin', name: 'Bitcoin', symbol: 'BTC', amount: 0.05, value: 2250 },
           { id: 'ethereum', name: 'Ethereum', symbol: 'ETH', amount: 1.2, value: 3840 },

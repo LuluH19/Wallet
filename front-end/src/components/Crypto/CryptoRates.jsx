@@ -11,13 +11,10 @@ const CryptoRates = () => {
     const fetchCryptoData = async () => {
       try {
         setLoading(true);
-        // En production, remplacez par un appel API réel, par exemple CoinGecko
-        // const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=10');
         
-        // Pour la démo, on simule une réponse après un petit délai
+    
         await new Promise(resolve => setTimeout(resolve, 1000));
         
-        // Données simulées
         const mockData = [
           { id: 'bitcoin', name: 'Bitcoin', symbol: 'BTC', current_price: 45000, price_change_percentage_24h: 2.5 },
           { id: 'ethereum', name: 'Ethereum', symbol: 'ETH', current_price: 3200, price_change_percentage_24h: -1.2 },

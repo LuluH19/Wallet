@@ -11,10 +11,8 @@ const Balance = () => {
     const fetchComptes = async () => {
       try {
         setLoading(true);
-        // Pour la démo, on simule une réponse
         await new Promise(resolve => setTimeout(resolve, 800));
         
-        // Données de test
         const mockComptes = [
           { _id: 'compte1', nom: 'Compte courant', numeroCompte: 'FR7630001007941234567890185', solde: 1500 },
           { _id: 'compte2', nom: 'Compte épargne', numeroCompte: 'FR7630004000031234567890143', solde: 2300 }

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './Crypto.css';
 
 const CryptoTrading = () => {
-  const { action } = useParams(); // 'buy' ou 'sell'
+  const { action } = useParams();   
   const navigate = useNavigate();
   const [cryptos, setCryptos] = useState([]);
   const [comptes, setComptes] = useState([]);
@@ -22,10 +22,8 @@ const CryptoTrading = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        // En production, utilisez de vraies API
         await new Promise(resolve => setTimeout(resolve, 800));
         
-        // Données crypto
         const mockCryptos = [
           { id: 'bitcoin', name: 'Bitcoin', symbol: 'BTC', current_price: 45000 },
           { id: 'ethereum', name: 'Ethereum', symbol: 'ETH', current_price: 3200 },
@@ -34,7 +32,6 @@ const CryptoTrading = () => {
           { id: 'solana', name: 'Solana', symbol: 'SOL', current_price: 98 },
         ];
         
-        // Données comptes
         const mockComptes = [
           { _id: 'compte1', nom: 'Compte courant', numeroCompte: 'FR7630001007941234567890185', solde: 1500 },
           { _id: 'compte2', nom: 'Compte épargne', numeroCompte: 'FR7630004000031234567890143', solde: 2300 }
@@ -77,7 +74,6 @@ const CryptoTrading = () => {
     
     try {
       setLoading(true);
-      // En production, appel API réel
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       const crypto = cryptos.find(c => c.id === selectedCrypto);

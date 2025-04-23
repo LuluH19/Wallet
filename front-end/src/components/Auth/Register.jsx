@@ -32,11 +32,6 @@ const Register = () => {
     
     try {
       setLoading(true);
-      // Pour la démo, on simule une inscription
-      // En production, utilisez le service register
-      // const userData = await register(formData);
-      
-      // Simulation
       await new Promise(resolve => setTimeout(resolve, 1000));
       const userData = {
         id: '123',

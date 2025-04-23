@@ -9,10 +9,8 @@ const RecentTransactions = () => {
     const fetchTransactions = async () => {
       try {
         setLoading(true);
-        // Pour la démo, on simule une réponse
         await new Promise(resolve => setTimeout(resolve, 1000));
         
-        // Données de test
         const mockTransactions = [
           { 
             _id: 'tr1', 

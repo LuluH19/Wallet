@@ -10,13 +10,16 @@ const Navbar = () => {
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
+    console.log('Stored user:', storedUser); 
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      const parsedUser = JSON.parse(storedUser);
+      console.log('Parsed user:', parsedUser); 
+      console.log('User role:', parsedUser.role); 
+      setUser(parsedUser);
     }
-  }, []);
+  }, [location]); 
 
   useEffect(() => {
-    // Fermer le menu mobile lors du changement de route
     setIsMenuOpen(false);
   }, [location]);
 
@@ -30,6 +33,8 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  console.log('Current user state:', user);
 
   return (
     <nav className="navbar">
