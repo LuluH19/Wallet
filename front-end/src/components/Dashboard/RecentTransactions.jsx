@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getVirements } from '../../services/api';
 
 const RecentTransactions = () => {
   const [transactions, setTransactions] = useState([]);

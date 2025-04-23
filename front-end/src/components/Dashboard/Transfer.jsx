@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { getComptes, performTransfer } from '../../services/api';
 import './Transfer.css';
 
 const Transfer = () => {

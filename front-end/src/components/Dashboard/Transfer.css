@@ -1,18 +1,26 @@
 .transfer-container {
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
   
   .transfer-card {
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     padding: 2rem;
     margin-top: 1.5rem;
+    width: 100%;
   }
   
   .transfer-form {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 2rem auto;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
   
   .transfer-submit-btn {
@@ -21,21 +29,23 @@
     background-color: #3498db;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 1rem;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
   }
   
   .transfer-submit-btn:hover {
     background-color: #2980b9;
+    transform: translateY(-2px);
   }
   
   .transfer-submit-btn:disabled {
-    background-color: #95a5a6;
+    background-color: #94a3b8;
     cursor: not-allowed;
+    transform: none;
   }
   
   .form-group {
@@ -53,12 +63,12 @@
   .form-group select,
   .form-group textarea {
     width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
     font-size: 1rem;
-    background-color: #f8f9fa;
-    transition: border-color 0.3s;
+    background-color: #f8fafc;
+    transition: all 0.3s ease;
   }
   
   .form-group input:focus,
@@ -66,20 +76,54 @@
   .form-group textarea:focus {
     border-color: #3498db;
     outline: none;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
   }
   
   .error-message {
-    color: #e74c3c;
-    padding: 0.8rem;
+    background-color: #fee2e2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
     margin-bottom: 1.5rem;
-    background-color: #fadbd8;
-    border-radius: 4px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
   
   .success-message {
-    color: #27ae60;
-    padding: 0.8rem;
+    background-color: #dcfce7;
+    border: 1px solid #bbf7d0;
+    color: #16a34a;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
     margin-bottom: 1.5rem;
-    background-color: #d4efdf;
-    border-radius: 4px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1240px) {
+    .transfer-container {
+      max-width: 95%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .transfer-container {
+      padding: 0 0.5rem;
+    }
+    
+    .transfer-card,
+    .transfer-form {
+      padding: 1.5rem;
+    }
+    
+    .transfer-form {
+      margin: 1rem auto;
+    }
   }

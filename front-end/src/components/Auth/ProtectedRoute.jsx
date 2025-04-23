@@ -1,18 +1,29 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 
-const ProtectedRoute = ({ children, admin = false }) => {
-  const user = JSON.parse(localStorage.getItem('user'));
+const ProtectedRoute = ({ children }) => {
+  // Récupérer l'utilisateur depuis le localStorage
+  const userString = localStorage.getItem('user');
+  console.log("ProtectedRoute - userString:", userString);
   
-  if (!user) {
+  // Vérifier si l'utilisateur existe
+  if (!userString) {
+    console.log("ProtectedRoute - Pas d'utilisateur, redirection vers login");
     return <Navigate to="/login" replace />;
   }
   
-  if (admin && user.role !== 'admin') {
-    return <Navigate to="/dashboard" replace />;
+  // Essayer de parser l'utilisateur
+  try {
+    const user = JSON.parse(userString);
+    console.log("ProtectedRoute - User trouvé:", user);
+    
+    // Si tout est bon, afficher les enfants (le dashboard)
+    return children;
+  } catch (error) {
+    console.error("ProtectedRoute - Erreur de parsing:", error);
+    // En cas d'erreur de parsing, rediriger vers login
+    return <Navigate to="/login" replace />;
   }
-  
-  return children;
 };
 
 export default ProtectedRoute;

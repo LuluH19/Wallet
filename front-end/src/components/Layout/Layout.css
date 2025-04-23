@@ -1,12 +1,33 @@
 /* Navbar Styles */
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #2c3e50;
+  padding: 0;
+  background-color: var(--secondary-color);
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: var(--navbar-height);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  height: 100%;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
 }
 
 .navbar-brand a {
@@ -14,84 +35,182 @@
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand a:hover {
+  color: var(--primary-color);
 }
 
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: var(--spacing-md);
 }
 
 .navbar-links a {
   color: white;
   text-decoration: none;
-  transition: color 0.3s;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
 .navbar-links a:hover {
-  color: #3498db;
+  color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-links a.active {
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .logout-btn {
   background: none;
-  border: 1px solid white;
+  border: 2px solid var(--primary-color);
   color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
 .logout-btn:hover {
-  background-color: white;
-  color: #2c3e50;
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.5rem;
 }
 
 /* Footer Styles */
 .footer {
-  background-color: #2c3e50;
+  background-color: var(--secondary-color);
   color: white;
-  padding: 1.5rem 2rem;
+  padding: var(--spacing-lg) 0;
   margin-top: auto;
+  width: 100%;
 }
 
 .footer-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
+  padding: 0 var(--spacing-lg);
 }
 
 .footer-links {
   display: flex;
-  gap: 1.5rem;
+  gap: var(--spacing-md);
 }
 
 .footer-links a {
   color: white;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: #3498db;
+  color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .navbar-content,
+  .footer-content {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    height: auto;
+    padding: var(--spacing-sm) 0;
+  }
+
+  .navbar-content {
+    padding: 0 var(--spacing-md);
+  }
+
+  .navbar-links {
+    gap: var(--spacing-sm);
+  }
+
+  .navbar-links a {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .navbar, .footer-content {
-    flex-direction: column;
-    gap: 1rem;
+  .mobile-menu-btn {
+    display: block;
   }
-  
+
+  .navbar-content {
+    flex-direction: column;
+    padding: var(--spacing-sm);
+  }
+
+  .navbar-brand {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .navbar-links {
+    display: none;
     flex-direction: column;
     width: 100%;
+    padding: var(--spacing-sm) 0;
   }
-  
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-links a {
+    width: 100%;
+    text-align: center;
+    padding: var(--spacing-sm);
+  }
+
+  .logout-btn {
+    width: 100%;
+    margin-top: var(--spacing-sm);
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-md);
+  }
+
   .footer-links {
-    margin-top: 1rem;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand a {
+    font-size: 1.25rem;
+  }
+
+  .navbar-links a {
+    font-size: 0.9rem;
   }
 }
